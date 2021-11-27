@@ -1,6 +1,16 @@
 import { useState } from 'react'
 import { getAllItems, Item } from './core';
-
+import {
+    Alignment,
+    Button,
+    Classes,
+    H5,
+    Navbar,
+    NavbarDivider,
+    NavbarGroup,
+    NavbarHeading,
+    Switch,
+} from "@blueprintjs/core";
 const shopItems = getAllItems();
 
 interface LineItem {
