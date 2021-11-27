@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { getAllItems, Item } from './core';
+import { getAllItems, Item } from './shopitem';
 import {
     Alignment,
     Button,
