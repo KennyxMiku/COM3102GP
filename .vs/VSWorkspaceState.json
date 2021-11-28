@@ -2,8 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\pages",
-    "\\public"
+    "\\pages\\api",
+    "\\public",
+    "\\styles"
   ],
-  "SelectedNode": "\\pages\\Shop.tsx",
+  "SelectedNode": "\\pages\\shopitem.ts",
   "PreviewInSolutionExplorer": false
 }

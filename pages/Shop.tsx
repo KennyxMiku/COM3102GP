@@ -1,11 +1,10 @@
 import { useState } from 'react'
+import React from 'react';
 import { getAllItems, Item } from './shopitem';
 import {
     Alignment,
     Button,
     Classes,
-    H3,
-    H5,
     Navbar,
     NavbarDivider,
     NavbarGroup,
@@ -13,8 +12,13 @@ import {
     Switch,
     Callout,
     Code,
+    H1,H2,H3,
     Intent,
-    Overlay
+    Overlay,
+    Drawer,
+    DrawerSize,
+    HTMLSelect,
+    OptionProps,
 } from "@blueprintjs/core";
 import "normalize.css";
 import "@blueprintjs/core/lib/css/blueprint.css";
@@ -22,31 +26,50 @@ import "@blueprintjs/icons/lib/css/blueprint-icons.css";
 import "@blueprintjs/popover2/lib/css/blueprint-popover2.css";
 
 import { FocusStyleManager } from "@blueprintjs/core";
+import { Position } from '@blueprintjs/core';
+import { isOpen } from '@blueprintjs/core/lib/esm/components/context-menu/contextMenu';
 
 FocusStyleManager.onlyShowFocusOnTabs();
 const shopItems = getAllItems();
-
-interface LineItem {
-    id: string;
-    item: string,
-    quantity: number,
-    price:number
-}
-export interface IOverlayExampleState {
+ 
+export interface IDrawerExampleState {
     autoFocus: boolean;
     canEscapeKeyClose: boolean;
     canOutsideClickClose: boolean;
     enforceFocus: boolean;
     hasBackdrop: boolean;
     isOpen: boolean;
+    position?: Position;
+    size: string;
     usePortal: boolean;
-    useTallContent: boolean;
 }
+let IDrawerState = {
+    autoFocus: true,
+    canEscapeKeyClose: true,
+    canOutsideClickClose: true,
+    enforceFocus: true,
+    hasBackdrop: true,
+    isOpen: false,
+    position: Position.RIGHT,
+    size: undefined,
+    usePortal: true,
+};
+interface LineItem {
+    id: string;
+    item: string,
+    quantity: number,
+    price:number
+}
+
 
 const Home: React.FC = function () {
     const [cart, setCart] = useState<LineItem[]>([]);
     const [count, setCount] = useState<number>(0);
-    const [a, setA] = useState<number>(0);
+    const [visible, setVisible] = useState(false);
+    const showDrawer = () => {
+        setVisible(true);
+    };
+    
     function addItemToCart(item: Item) {
         let check: boolean = false;
         let num: number;
@@ -55,7 +78,7 @@ const Home: React.FC = function () {
                 if (cart[i].id == item.id) {
                     check = true;
                     num = i;
-                }     
+                }      
         }
         if (check) {
 
@@ -116,40 +139,60 @@ const Home: React.FC = function () {
         }
         setCount((count-count) + num);
     }
+    
+    function handleClose() {
+        IDrawerState = {
+            autoFocus: true,
+            canEscapeKeyClose: true,
+            canOutsideClickClose: true,
+            enforceFocus: true,
+            hasBackdrop: true,
+            isOpen: false,
+            position: Position.RIGHT,
+            size: undefined,
+            usePortal: true,
+        }
 
 
+    };
     return (
         <>
         
         <div>
                 <nav className="bp3-navbar bp3-dark">
                     <div style={{ margin: 0 , width:'480px'  }}>
-                        <div className="bp3-navbar-group bp3-align-left">
-                            <div className="bp3-navbar-heading">HSU Shop</div>
-                        </div>
-                        <div className="bp3-navbar-group bp3-align-right">
-                            <button className="bp3-button bp3-minimal bp3-icon-home">Home</button>
-                            <button className="bp3-button bp3-minimal bp3-icon-document">Shop</button>
-                            <span className="bp3-navbar-divider"></span>
-                            <button className="bp3-button bp3-minimal bp3-icon-user"></button>
-                            <button className="bp3-button bp3-minimal bp3-icon-notifications"></button>
-                            <button className="bp3-button bp3-minimal bp3-icon-cog"></button>
-                        </div>
+                        <Navbar>
+                            <Navbar.Group align={Alignment.LEFT}>
+                                <Navbar.Heading><a href="./Home">HSU Shop</a></Navbar.Heading>
+                                <Navbar.Divider />
+                               <a href="./Home"> <Button className="bp3-minimal" icon="home" text="Home" /></a>
+                                <a href="./Shop"> <Button className="bp3-minimal" icon="shop" text="Shop" /></a>
+                                <Navbar.Divider />
+                            </Navbar.Group>
+                            <Navbar.Group align={Alignment.RIGHT}>                               
+                                <Button className="bp3-minimal" icon="shopping-cart" text="Cart" />
+                                
+                            </Navbar.Group>
+
+                        </Navbar>
+                        <Drawer title="Basic Drawer" isOpen onClose={isOpen=false}>
+                            <H1>Cart</H1>
+                        </Drawer>
+
                     </div>
                 </nav>
-            
-
-            <span style={{ backgroundColor: 'yellow' }}>
-                
-            <p ><h1> Product:</h1> </p>
-           {shopItems.map(item => <ShopItem key={item.id} item={item} onAdd={() => addItemToCart(item)} />)}
-            <p style={{ backgroundColor: 'white' }}> <h2>Cart items:</h2> </p>
-          {cart.map((item, index) => <CartItem key={item.item} item={item} onRemove={() => removeItem(index)} onAddd={() => addnum(index)} ondeduct={() => deductnum(index)} />)}
-
-            <p><button onClick={() => removeall(cart.length)}> Reset</button>  <button onClick={() => Total()}> Cacluate Total</button></p>
-            <p style={{ fontSize: '30px' }}>Total: ${count}</p>
-            </span>
+           
             </div>
+            <div style={{ backgroundColor: 'white' }}>
+                <H2> Product: </H2>
+                {shopItems.map(item => <ShopItem key={item.id} item={item} onAdd={() => addItemToCart(item)} />)}
+                <p style={{ backgroundColor: 'white' }}> <h2>Cart items:</h2> </p>
+                {cart.map((item, index) => <CartItem key={item.item} item={item} onRemove={() => removeItem(index)} onAddd={() => addnum(index)} ondeduct={() => deductnum(index)} />)}
+
+                <p><button onClick={() => removeall(cart.length)}> Reset</button>  <button onClick={() => Total()}> Cacluate Total</button></p>
+                <p style={{ fontSize: '30px' }}>Total: ${count}</p>
+            </div>
+
             </>
   )
 }
