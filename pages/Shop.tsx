@@ -12,6 +12,7 @@ import {
     Switch,
     Callout,
     Code,
+    Card,
     H1,H2,H3,
     Intent,
     Overlay,
@@ -19,6 +20,8 @@ import {
     DrawerSize,
     HTMLSelect,
     OptionProps,
+    Colors,
+    Icon
 } from "@blueprintjs/core";
 import "normalize.css";
 import "@blueprintjs/core/lib/css/blueprint.css";
@@ -27,6 +30,7 @@ import "@blueprintjs/popover2/lib/css/blueprint-popover2.css";
 
 import { FocusStyleManager } from "@blueprintjs/core";
 import { Position } from '@blueprintjs/core';
+import { ICON } from '@blueprintjs/core/lib/esm/common/classes';
 
 
 FocusStyleManager.onlyShowFocusOnTabs();
@@ -130,21 +134,21 @@ const Home: React.FC = function () {
     return (
         <>
         
-        <div>
-                <nav className="bp3-navbar bp3-dark">
+            <div style={{ margin: 0, width: '100%' }}>
+                <nav className="bp3-navbar " style={{ background: Colors.GREEN5, width: '100%' }}>
                     <div style={{ margin: 0, width: '480px' }}>
                         <div className="bp3-navbar-group bp3-align-left">
-                            <div className="bp3-navbar-heading"><a href="./Home">HSU Shop</a></div>
+                            <div className="bp3-navbar-heading"><a href="./Home"><h3 className="bp3-heading">HSU Shop</h3></a></div>
                             <span className="bp3-navbar-divider"></span>
                         </div>
                         <div className="bp3-navbar-group bp3-align-left">
-                            <a href="./Home"><button className="bp3-button bp3-minimal bp3-icon-home">Home</button></a>
-                            <a href="./Shop"> <button className="bp3-button bp3-minimal bp3-icon-shopping-cart">Shop</button></a>
+                            <a href="./Home"><button className="bp3-button bp3-large bp3-icon-home">Home</button></a>
+                            <a href="./Shop"> <button className="bp3-button bp3-large bp3-icon-shop">Shop</button></a>
                             <span className="bp3-navbar-divider"></span>
                         </div>
                         <div className="bp3-navbar-group bp3-align-right">
-                            <button className="bp3-button bp3-minimal bp3-icon-home" onClick={() => showDrawer()}>Cart</button>
-                            <span className="bp3-navbar-divider"></span>
+                            <button className="bp3-button bp3-large bp3-icon-shopping-cart" onClick={() => showDrawer()}>Cart</button>
+                        
                         </div>
                         <Drawer isOpen={visible} title="Shoping cart" size="560px" onClose={() => closeDrawer()} >
                             <span className={Classes.DRAWER_BODY}>
@@ -182,15 +186,17 @@ const ShopItem: React.FC<{
     
     return (
         
-            <span style={{
-                display: 'block', width: 700, padding: 30
+        <span style={{
+            display: 'block', width: 350, padding: 20
             }}>
 
-            <Callout title={title}>
+            <Callout className="bp3-intent-primary" title={title}>
+                <span style={{ fontSize:"18px" }}>
                 <p>Product: {title}</p>
-                <p>Description: {description}</p>
-                <p>Price: {price}</p>
-                <p> <Button onClick={onAdd}> Add to shopping cart</Button></p>
+                    <p>Description: {description}</p>
+                    <p>Price: <Icon icon="dollar" />{price}</p>
+                    <p> <Button icon="insert" onClick={onAdd}> Add to shopping cart</Button></p>
+                    </span>
             </Callout>        
             </span>
         
@@ -211,13 +217,15 @@ const CartItem: React.FC<{
     const { item, quantity, price } = lineitem
 
   return (
-      <div style={{ backgroundColor: '#fecf7b', border: ` 4px dashed black`, fontSize: '20px' }}>
+      <span>
+          <Callout title={item}>
           <p>Product: {item}  </p>
           <p>Price: ${price}</p>
           <p><Button icon="add" onClick={onAddd} /><span>Quantity: {quantity}</span><Button icon="remove" onClick={ondeduct}/></p>
 
-          <Button onClick={onRemove}>Remove item</Button>
-    </div>
+              <Button icon="trash" onClick={onRemove}>Remove item</Button>
+         </Callout>
+    </span>
   )
 }
 
