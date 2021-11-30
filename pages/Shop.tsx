@@ -50,7 +50,27 @@ const Home: React.FC = function () {
     const [cart, setCart] = useState<LineItem[]>([]);
     const [count, setCount] = useState<number>(0);
     const [visible, setVisible] = useState(false);
+    const [data, setData] = useState<string>('');
 
+    function save() {
+        localStorage.setItem('data', count.toString());
+        console.log('Data is saved');
+    }
+
+    function load() {
+        const read = localStorage.getItem('data');
+        if (read) {
+            setData(read);
+            console.log('Loading is done');
+        } else {
+            console.log('No data is found');
+        }
+    }
+
+    function clear() {
+        localStorage.removeItem('data');
+        console.log('Data is cleared');
+    }
     const showDrawer = () => {
         setVisible(true);
         Total();
@@ -160,7 +180,7 @@ const Home: React.FC = function () {
                             {cart.map((item, index) => <CartItem key={item.item} item={item} onRemove={() => removeItem(index)} onAddd={() => addnum(index)} ondeduct={() => deductnum(index)} />)}
                                 </span>
                             <div className={Classes.DRAWER_FOOTER}>
-                                <button type="submit" className=".bp3-large bp3-button bp3-icon-dollar" > Pay</button>  &nbsp;
+                                <AnchorButton type="submit" className=".bp3-large bp3-button bp3-icon-dollar" href="./Payment" onClick={save} > Pay</AnchorButton>  &nbsp;
                                 <span style={{ fontSize: '20px' }}>Total: ${count}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <button className=".bp3-large bp3-button bp3-icon-reset" onClick={() => removeall(cart.length)}> Reset</button>
 
@@ -171,9 +191,9 @@ const Home: React.FC = function () {
 
             </div>
                 <div style={{ backgroundColor: 'white' }}>
-                     
-                <H2> Product: </H2>
-                {shopItems.map(item => <ShopItem key={item.id} item={item} onAdd={() => addItemToCart(item)} />)}
+                <br /> <br /><br />
+                <H2 style={{ textAlign: 'center' }}> Product: </H2>
+                <div>{shopItems.map(item => <ShopItem key={item.id} item={item} onAdd={() => addItemToCart(item)} />)}</div>
                 
             </div>
 
@@ -189,10 +209,8 @@ const ShopItem: React.FC<{
 
     
     return (
-        
-        <span style={{
-            display: 'block', width: 350, padding: 20
-            }}>
+
+        <span style={{ display: 'inline-flex', width: '33%', padding: 20, position:'relative' }}>
 
             <Callout className="bp3-intent-primary" title={title}>
                 <span style={{ fontSize:"18px" }}>

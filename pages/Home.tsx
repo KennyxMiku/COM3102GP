@@ -55,7 +55,7 @@ const Demo: React.FC = function () {
                         <span className="bp3-navbar-divider"></span>
                     </div>
                     <div className="bp3-navbar-group bp3-align-right">
-                        <button className="bp3-button bp3-large bp3-icon-log-in" >Login</button>
+                        <AnchorButton href="./login" className="bp3-button bp3-large bp3-icon-log-in" >Login</AnchorButton>
                     </div>
                   
                 </span>
