@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import React from 'react';
+import React, { useState } from 'react';
+import LoginForm from './comp/LoginForm';
 import {
     Alignment,
     Button,
@@ -34,19 +34,32 @@ import { ICON } from '@blueprintjs/core/lib/esm/common/classes';
 
 
 FocusStyleManager.onlyShowFocusOnTabs();
-
-interface LineItem {
-    id: string;
-    item: string,
-    quantity: number,
-    price:number
-}
-
 const Demo: React.FC = function () {
-    const [cart, setCart] = useState<LineItem[]>([]);
-    const [count, setCount] = useState<number>(0);
+        const adminUser ={
+            email:"admin@admin.com",
+            password:"admin"
+        }
+        const [user, setUser] = useState({name:"", email:""});
+        const [error, setError] = useState();
+        
+        const Login = details => {
+            console.log(details);
+            if(details.email == adminUser.email && details.password == adminUser.password){
+                console.log("logged in");
+                setUser({
+                    name: details.name,
+                    email: details.email
+                });
+            }else{
+                    console.log("detail do not match!")
+                }
+            }
+          
 
-    
+        const Logout = () => {
+            console.log("Logout"); 
+        }
+
     return (
         <div>
             <nav className="bp3-navbar bp3-fixed-top" style={{ background: Colors.GREEN5 }}>
@@ -64,13 +77,20 @@ const Demo: React.FC = function () {
                     <div className="bp3-navbar-group bp3-align-right">
                         <AnchorButton href="./login" className="bp3-button bp3-large bp3-icon-log-in" >Login</AnchorButton>
                     </div>
-
                 </span>
             </nav>
+            ggttgt<div className="login">
+           {(user.email !="") ? (
+               <div className="Welcome">
+                   <h2>Welcome, </h2><h2><span>{user.name}</span></h2>
+                    <button>Logout</button>
+               </div>
+           ) : (
+               <LoginForm Login={Login} error={error}/>
+           )}
+            </div>
         </div>
   )
 }
-
-
 
 export default Demo;
