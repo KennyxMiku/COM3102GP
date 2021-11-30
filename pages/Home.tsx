@@ -66,7 +66,7 @@ const Demo: React.FC = function () {
             </nav>
             </div>
             <div>
-                <img src={background} />
+               
 
 
                 </div>
