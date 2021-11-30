@@ -49,6 +49,7 @@ const Home: React.FC = function () {
     const [cart, setCart] = useState<LineItem[]>([]);
     const [count, setCount] = useState<number>(0);
     const [visible, setVisible] = useState(false);
+
     const showDrawer = () => {
         setVisible(true);
         Total();
@@ -133,10 +134,10 @@ const Home: React.FC = function () {
     
     return (
         <>
-        
-            <div style={{ margin: 0, width: '100%' }}>
-                <nav className="bp3-navbar " style={{ background: Colors.GREEN5, width: '100%' }}>
-                    <div style={{ margin: 0, width: '480px' }}>
+
+            <div style={{ margin: '0 auto'}}>
+                <nav className="bp3-navbar bp3-fixed-top" style={{ background: Colors.GREEN5 }}>
+                    <span style={{ margin: '0 auto', width: '480px' }}>
                         <div className="bp3-navbar-group bp3-align-left">
                             <div className="bp3-navbar-heading"><a href="./Home"><h3 className="bp3-heading">HSU Shop</h3></a></div>
                             <span className="bp3-navbar-divider"></span>
@@ -144,9 +145,11 @@ const Home: React.FC = function () {
                         <div className="bp3-navbar-group bp3-align-left">
                             <a href="./Home"><button className="bp3-button bp3-large bp3-icon-home">Home</button></a>
                             <a href="./Shop"> <button className="bp3-button bp3-large bp3-icon-shop">Shop</button></a>
+                            <a href="./Shop"> <button className="bp3-button bp3-large bp3-icon-phone">Contact us</button></a>
                             <span className="bp3-navbar-divider"></span>
                         </div>
                         <div className="bp3-navbar-group bp3-align-right">
+                            <button className="bp3-button bp3-large bp3-icon-log-in" >Login</button>
                             <button className="bp3-button bp3-large bp3-icon-shopping-cart" onClick={() => showDrawer()}>Cart</button>
                         
                         </div>
@@ -162,7 +165,7 @@ const Home: React.FC = function () {
 
                             </div>
                         </Drawer>
-                       </div>
+                       </span>
                     </nav>
 
             </div>
