@@ -112,7 +112,7 @@ const Demo: React.FC = function () {
                     <span style={{ fontSize: '20px'}}>Credit card Number :</span>
                     <input style={{ width: '30%' }} className="bp3-input bp3-large" type="text" placeholder="xxxx-xxxx-xxxx-xxxx" dir="auto" />                  
                     <input style={{ width: '5%' }} className="bp3-input bp3-large" type="text" placeholder="xxx" dir="auto" />
-
+                    <AnchorButton type="submit" className=".bp3-large bp3-button bp3-icon-dollar" href="./Home" > Confirm</AnchorButton>
                 </div>
 
             </div>

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import React from 'react';
+declare module "*.png"
 import {
     Alignment,
     Button,
@@ -31,6 +32,7 @@ import "@blueprintjs/popover2/lib/css/blueprint-popover2.css";
 import { FocusStyleManager } from "@blueprintjs/core";
 import { Position } from '@blueprintjs/core';
 import { ICON } from '@blueprintjs/core/lib/esm/common/classes';
+import background from "./hsu1.png";
 
 
 FocusStyleManager.onlyShowFocusOnTabs();
@@ -41,6 +43,8 @@ const Demo: React.FC = function () {
     const [a, setA] = useState<number>(0);
     
     return (
+
+        <>
         <div style={{ backgroundColor: '#abdbe3'}}>
             <nav className="bp3-navbar bp3-fixed-top" style={{ background: Colors.GREEN5 }}>
                 <span style={{ margin: '0 auto', width: '480px' }}>
@@ -60,7 +64,13 @@ const Demo: React.FC = function () {
                   
                 </span>
             </nav>
-        </div>
+            </div>
+            <div>
+                <img src={background} />
+
+
+                </div>
+            </>
   )
 }
 

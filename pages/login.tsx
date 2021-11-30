@@ -21,7 +21,12 @@ import {
     OptionProps,
     Colors,
     Icon,
-    AnchorButton
+    AnchorButton,
+    InputGroup,
+    RadioGroup,
+    Radio,
+    ButtonGroup,
+    Position
 } from "@blueprintjs/core";
 import "normalize.css";
 import "@blueprintjs/core/lib/css/blueprint.css";
@@ -29,7 +34,6 @@ import "@blueprintjs/icons/lib/css/blueprint-icons.css";
 import "@blueprintjs/popover2/lib/css/blueprint-popover2.css";
 
 import { FocusStyleManager } from "@blueprintjs/core";
-import { Position } from '@blueprintjs/core';
 import { ICON } from '@blueprintjs/core/lib/esm/common/classes';
 
 
@@ -48,6 +52,7 @@ const Demo: React.FC = function () {
 
     
     return (
+        <>
         <div>
             <nav className="bp3-navbar bp3-fixed-top" style={{ background: Colors.GREEN5 }}>
                 <span style={{ margin: '0 auto', width: '480px' }}>
@@ -67,7 +72,24 @@ const Demo: React.FC = function () {
 
                 </span>
             </nav>
-        </div>
+            </div>
+            <div>
+                <p style={{ fontSize: '30px', padding: '5%' }}>Login</p>
+                <div style={{ paddingLeft: '10%' }}><span style={{ fontSize: '20px' }}>Username :</span>
+                    <span> <input style={{ width: '20%' }} className="bp3-input bp3-large" type="text" placeholder="Enter username here...." dir="auto" />
+                    </span>
+                </div>
+                <br/>
+                <div style={{ paddingLeft: '10%' }}><span style={{ fontSize: '20px' }}>Password :</span>
+                    
+                    <span>  <input type="password" className="bp3-input bp3-large"  placeholder="Enter your password..." />
+                    </span>
+                </div>
+                <span style={{ paddingLeft: '10%' }}> <AnchorButton type="submit" className=".bp3-large bp3-button" href="./Home" > Login</AnchorButton> </span>
+            </div>
+
+
+            </>
   )
 }
 
