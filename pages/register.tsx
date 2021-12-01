@@ -39,14 +39,25 @@ import { ICON } from '@blueprintjs/core/lib/esm/common/classes';
 FocusStyleManager.onlyShowFocusOnTabs();
 
 interface User {
-    programe: string;
-    year: string;
+    programe?: string;
+    year?: string;
     name: string;
     password: string;
 }
 
 const Demo: React.FC = function () {
+    const [user, setUser] = useState<User>({
+        programe:'',
+        year:'',
+        name:'',
+        password:''
+    });
+    function save() {
+        const data = JSON.stringify(user);
+        localStorage.setItem('data', data);
 
+        console.log(data);
+      }
 
     
     return (
@@ -72,18 +83,36 @@ const Demo: React.FC = function () {
             </nav>
             </div>
             <div>
-                <p style={{ fontSize: '30px', padding: '5%' }}>Login</p>
+                <p style={{ fontSize: '30px', padding: '5%' }}>Register</p>
+                <div style={{ paddingLeft: '10%' }}><span style={{ fontSize: '20px' }}>Programe :</span>
+                    <span> <input style={{ width: '20%' }} className="bp3-input bp3-large" type="text" placeholder="Enter programe here...." dir="auto" 
+                              value={user.programe}
+                              onChange={x => setUser({...user, programe: x.target.value})}/>
+                    </span>
+                </div>
+                <br/>
+                <div style={{ paddingLeft: '10%' }}><span style={{ fontSize: '20px' }}>Year of entrance :</span>
+                    <span> <input style={{ width: '20%' }} className="bp3-input bp3-large" type="text" placeholder="Enter year of entrance ...." dir="auto" 
+                              value={user.year}
+                              onChange={x => setUser({...user, year: x.target.value})}/>
+                    </span>
+                </div>
+                <br/>
                 <div style={{ paddingLeft: '10%' }}><span style={{ fontSize: '20px' }}>Username/StudentID :</span>
-                    <span> <input style={{ width: '20%' }} className="bp3-input bp3-large" type="text" placeholder="Enter username here...." dir="auto" />
+                    <span> <input style={{ width: '20%' }} className="bp3-input bp3-large" type="text" placeholder="Enter username here...." dir="auto" 
+                              value={user.name}
+                              onChange={x => setUser({...user, name: x.target.value})}/>
                     </span>
                 </div>
                 <br/>
                 <div style={{ paddingLeft: '10%' }}><span style={{ fontSize: '20px' }}>Password :</span>
                     
-                    <span>  <input type="password" className="bp3-input bp3-large"  placeholder="Enter your password..." />
+                    <span>  <input type="password" className="bp3-input bp3-large"  placeholder="Enter your password..." 
+                                                  value={user.password}
+                                                  onChange={x => setUser({...user, password: x.target.value})}/>
                     </span>
                 </div>
-                <span style={{ paddingLeft: '10%' }}> <AnchorButton type="submit" className=".bp3-large bp3-button" href="./Home" > Login</AnchorButton> </span>
+                <span style={{ paddingLeft: '10%' }}> <AnchorButton type="submit" className=".bp3-large bp3-button" /*href="./Home"*/ onClick={save}> Register</AnchorButton> </span>
             </div>
 
 
