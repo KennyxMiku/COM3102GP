@@ -33,7 +33,7 @@ import { ICON } from '@blueprintjs/core/lib/esm/common/classes';
 
 
 FocusStyleManager.onlyShowFocusOnTabs();
-const Demo: React.FC = function () {
+const ContactUs: React.FC = function () {
     
     return (
 
@@ -64,11 +64,7 @@ const Demo: React.FC = function () {
             </nav>
         </div>
         <div className="content"><br/><br/><br/>
-        <H3 style={{ textAlign: 'left' }}> Student Union Online Shop </H3>
-        <H3 style={{ textAlign: 'left' }}> Hsu Campus Map </H3>
-            <div className="HsuMap">
-                <img src={'/HsuMap.jpg'} alt='Map' width='800' height='450' />
-            </div>
+
         </div>
          </>
   )
@@ -76,4 +72,4 @@ const Demo: React.FC = function () {
 
 
 
-export default Demo;
+export default ContactUs;

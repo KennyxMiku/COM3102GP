@@ -70,7 +70,7 @@ const Demo: React.FC = function () {
                     <div className="bp3-navbar-group bp3-align-left">
                         <AnchorButton href="./Home" className="bp3-button bp3-large bp3-icon-home">Home</AnchorButton>
                         <AnchorButton href="./Shop" className="bp3-button bp3-large bp3-icon-shop">Shop</AnchorButton>
-                        <AnchorButton href="./Shop" className="bp3-button bp3-large bp3-icon-phone">Contact us</AnchorButton>
+                        <AnchorButton href="./ContactUs" className="bp3-button bp3-large bp3-icon-phone">Contact us</AnchorButton>
                         <span className="bp3-navbar-divider"></span>
                     </div>
                     <div className="bp3-navbar-group bp3-align-right">
