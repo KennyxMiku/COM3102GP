@@ -45,7 +45,7 @@ interface User {
     password: string;
 }
 
-const Register: React.FC = function () {
+const Demo: React.FC = function () {
     const [user, setUser] = useState<User>({
         programe:'',
         year:'',
@@ -58,7 +58,10 @@ const Register: React.FC = function () {
 
         console.log(data);
       }
-
+    
+    function validateForm() {
+    return user.name.length > 0 && user.password.length > 0;
+    }
     
     return (
         <>
@@ -112,7 +115,7 @@ const Register: React.FC = function () {
                                                   onChange={x => setUser({...user, password: x.target.value})}/>
                     </span>
                 </div>
-                <span style={{ paddingLeft: '10%' }}> <AnchorButton type="submit" className=".bp3-large bp3-button" /*href="./Home"*/ onClick={submitRegister}> Register</AnchorButton> </span>
+                <span style={{ paddingLeft: '10%' }}> <AnchorButton type="submit" className=".bp3-large bp3-button" /*href="./Home"*/ onClick={submitRegister} disabled={!validateForm()}> Register</AnchorButton> </span>
             </div>
 
 
@@ -122,4 +125,4 @@ const Register: React.FC = function () {
 
 
 
-export default Register;
+export default Demo;

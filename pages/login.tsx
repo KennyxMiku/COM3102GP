@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React from 'react';
+import { useState } from 'react'
 import {
     Alignment,
     Button,
@@ -45,7 +46,7 @@ interface User {
     password: string;
 }
 
-const Login: React.FC = function () {
+const Demo: React.FC = function () {
 
 
     
@@ -98,4 +99,4 @@ const Login: React.FC = function () {
 
 
 
-export default Login;
+export default Demo;
