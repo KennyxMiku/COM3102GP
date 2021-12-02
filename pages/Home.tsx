@@ -1,5 +1,4 @@
-import { useState } from 'react'
-import React from 'react';
+import React,{ useState } from 'react'
 import {
     Alignment,
     Button,
@@ -62,10 +61,14 @@ const Demo: React.FC = function () {
                 </span>
             </nav>
         </div>
-        <br/><br/><br/>
-                <div className="HsuMap">
-                    <img src={'/HsuMap.jpg'} alt='Map' width='800' height='450' />
+        <div className="content"><br/><br/><br/>
+        <H1 style={{ textAlign: 'left' }}> HSU </H1>
+        <H3 style={{ textAlign: 'left' }}> Student Union Online Shop </H3>
+        <H3 style={{ textAlign: 'left' }}> Hsu Campus Map </H3>
+            <div className="HsuMap">
+                <img src={'/HsuMap.jpg'} alt='Map' width='800' height='450' />
             </div>
+        </div>
          </>
   )
 }
