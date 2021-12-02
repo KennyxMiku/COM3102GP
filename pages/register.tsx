@@ -46,19 +46,26 @@ interface User {
 }
 
 const Demo: React.FC = function () {
-    const [user, setUser] = useState<User>({
+    const [user, setUser] = useState({
         programe:'',
         year:'',
         name:'',
         password:''
     });
-    const [student,setStudent] = useState<boolean>(false);
-    function submitRegister() {
+    const submitRegister = e => {
+        e.preventDefault();
         const data = JSON.stringify(user);
         localStorage.setItem('data', data);
 
         console.log(data);
-      } 
+      };
+
+    const update = e => {
+        setUser({
+        ...user,
+        [e.target.name]: e.target.value
+        });
+    };
     function validateForm() {
     return user.name.length > 0 && user.password.length > 0;
     }
@@ -91,29 +98,33 @@ const Demo: React.FC = function () {
                 <div style={{ paddingLeft: '10%' }}><span style={{ fontSize: '20px' }}>Programe :</span>
                     <span> <input style={{ width: '20%' }} className="bp3-input bp3-large" type="text" placeholder="Enter programe here...." dir="auto" 
                               value={user.programe}
-                              onChange={x => setUser({...user, programe: x.target.value})}/>
+                              name="programe"
+                              onChange={update}/>
                     </span>
                 </div>
                 <br/>
                 <div style={{ paddingLeft: '10%' }}><span style={{ fontSize: '20px' }}>Year of entrance :</span>
                     <span> <input style={{ width: '20%' }} className="bp3-input bp3-large" type="text" placeholder="Enter year of entrance ...." dir="auto" 
                               value={user.year}
-                              onChange={x => setUser({...user, year: x.target.value})}/>
+                              name="year"
+                              onChange={update}/>
                     </span>
                 </div>
                 <br/>
                 <div style={{ paddingLeft: '10%' }}><span style={{ fontSize: '20px' }}>Username/StudentID :</span>
                     <span> <input style={{ width: '20%' }} className="bp3-input bp3-large" type="text" placeholder="Enter username here...." dir="auto" 
                               value={user.name}
-                              onChange={x => setUser({...user, name: x.target.value})}/>
+                              name="name"
+                              onChange={update}/>
                     </span>
                 </div>
                 <br/>
                 <div style={{ paddingLeft: '10%' }}><span style={{ fontSize: '20px' }}>Password :</span>
                     
                     <span>  <input type="password" className="bp3-input bp3-large"  placeholder="Enter your password..." 
-                                                  value={user.password}
-                                                  onChange={x => setUser({...user, password: x.target.value})}/>
+                              value={user.password}
+                              name="password"
+                              onChange={update}/>
                     </span>
                 </div>
                 <span style={{ paddingLeft: '10%' }}> <AnchorButton type="submit" className=".bp3-large bp3-button" /*href="./Home"*/ onClick={submitRegister} disabled={!validateForm()}> Register</AnchorButton> </span>
