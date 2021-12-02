@@ -38,31 +38,34 @@ import { ICON } from '@blueprintjs/core/lib/esm/common/classes';
 
 FocusStyleManager.onlyShowFocusOnTabs();
 
-interface User {
+export interface User {
     programe?: string;
     year?: string;
     name: string;
     password: string;
 }
 
-const Demo: React.FC = function () {
-    const [user, setUser] = useState<User>({
-        programe:'',
-        year:'',
-        name:'',
-        password:''
-    });
-    const [student,setStudent] = useState<boolean>(false);
-    function submitRegister() {
-        const data = JSON.stringify(user);
-        localStorage.setItem('data', data);
 
-        console.log(data);
+
+const Demo: React.FC = function () {
+    const [prog, setProg] = useState<string>('');
+    const [year, setYear] = useState<string>('');
+    const [name, setName] = useState<string>('');
+    const [pw, setPw] = useState<string>('');
+    const [user, setUser] = useState<User[]>();
+    const [student,setStudent] = useState<boolean>(true);
+    function submitRegister() {
+        setUser([...user, { programe: prog, year: year, name: name, password: pw }]);
+        localStorage.setItem('user', JSON.stringify(user))
       } 
     function validateForm() {
-    return user.name.length > 0 && user.password.length > 0;
+        if (name === '' || pw === '') {
+            setStudent(false);
+        } else {
+            setStudent(true);
+        }
     }
-
+    
     return (
         <>
         <div>
@@ -90,33 +93,33 @@ const Demo: React.FC = function () {
                 <p style={{ fontSize: '30px', padding: '5%' }}>Register</p>
                 <div style={{ paddingLeft: '10%' }}><span style={{ fontSize: '20px' }}>Programe :</span>
                     <span> <input style={{ width: '20%' }} className="bp3-input bp3-large" type="text" placeholder="Enter programe here...." dir="auto" 
-                              value={user.programe}
-                              onChange={x => setUser({...user, programe: x.target.value})}/>
+
+                        onChange={x => setProg(x.target.value)} />
                     </span>
                 </div>
                 <br/>
                 <div style={{ paddingLeft: '10%' }}><span style={{ fontSize: '20px' }}>Year of entrance :</span>
                     <span> <input style={{ width: '20%' }} className="bp3-input bp3-large" type="text" placeholder="Enter year of entrance ...." dir="auto" 
-                              value={user.year}
-                              onChange={x => setUser({...user, year: x.target.value})}/>
+
+                        onChange={x => setYear(x.target.value)} />
                     </span>
                 </div>
                 <br/>
                 <div style={{ paddingLeft: '10%' }}><span style={{ fontSize: '20px' }}>Username/StudentID :</span>
                     <span> <input style={{ width: '20%' }} className="bp3-input bp3-large" type="text" placeholder="Enter username here...." dir="auto" 
-                              value={user.name}
-                              onChange={x => setUser({...user, name: x.target.value})}/>
+
+                        onChange={x => setName(x.target.value)} />
                     </span>
                 </div>
                 <br/>
                 <div style={{ paddingLeft: '10%' }}><span style={{ fontSize: '20px' }}>Password :</span>
                     
                     <span>  <input type="password" className="bp3-input bp3-large"  placeholder="Enter your password..." 
-                                                  value={user.password}
-                                                  onChange={x => setUser({...user, password: x.target.value})}/>
+                                                  
+                        onChange={x => setPw(x.target.value)}/>
                     </span>
                 </div>
-                <span style={{ paddingLeft: '10%' }}> <AnchorButton type="submit" className=".bp3-large bp3-button" /*href="./Home"*/ onClick={submitRegister} disabled={!validateForm()}> Register</AnchorButton> </span>
+                <span style={{ paddingLeft: '10%' }}> <AnchorButton type="submit" className=".bp3-large bp3-button" /*href="./Home"*/ onClick={submitRegister} disabled={student}> Register</AnchorButton> </span>
             </div>
 
 

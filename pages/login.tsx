@@ -35,7 +35,7 @@ import "@blueprintjs/popover2/lib/css/blueprint-popover2.css";
 
 import { FocusStyleManager } from "@blueprintjs/core";
 import { ICON } from '@blueprintjs/core/lib/esm/common/classes';
-
+import { User }from './register'
 
 FocusStyleManager.onlyShowFocusOnTabs();
 
@@ -45,6 +45,8 @@ interface CurrentUser {
 }
 
 const Demo: React.FC = function () {
+    const usss = typeof window !== 'undefined' ? localStorage.getItem('user') : null;
+    const user = JSON.parse(usss) as User;
 
     const [cUser, setCUser] = useState<CurrentUser>({
             name:'',

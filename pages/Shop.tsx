@@ -38,7 +38,7 @@ FocusStyleManager.onlyShowFocusOnTabs();
 const shopItems = getAllItems();
  
 
-interface LineItem {
+export interface LineItem {
     id: string;
     item: string,
     quantity: number,
@@ -78,9 +78,7 @@ const Home: React.FC = function () {
     const closeDrawer = () => {
         setVisible(false);
     };
-     function getAllItems():  LineItem[] {
-        return cart;
-    }
+    
     function addItemToCart(item: Item) {
         let check: boolean = false;
         let num: number;
