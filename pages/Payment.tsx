@@ -3,7 +3,7 @@ import React from 'react';
 import {
     Alignment,
     Button,
-    Classes,
+   
     Navbar,
     NavbarDivider,
     NavbarGroup,
@@ -32,7 +32,7 @@ import "normalize.css";
 import "@blueprintjs/core/lib/css/blueprint.css";
 import "@blueprintjs/icons/lib/css/blueprint-icons.css";
 import "@blueprintjs/popover2/lib/css/blueprint-popover2.css";
-
+import { Popover2, Classes } from "@blueprintjs/popover2";
 import { FocusStyleManager } from "@blueprintjs/core";
 import { ICON } from '@blueprintjs/core/lib/esm/common/classes';
 
@@ -40,32 +40,29 @@ import { ICON } from '@blueprintjs/core/lib/esm/common/classes';
 
 FocusStyleManager.onlyShowFocusOnTabs();
 
-interface radioState {
-    ra: string;
-}
 const Demo: React.FC = function () {
    
     const [count, setCount] = useState<number>(0);
     const [a, setA] = useState<number>(0);
-    const [visible, setVisible] = useState<String>('none');
-    const [data, setData] = useState<string>('');
+    const [add, setAdd] = useState<string>('');
+    const [visible, setVisible] = useState(false);
+   
     const show = () => {
-        setVisible('block');
+        setVisible(false);
         
     };
     const close = () => {
-        setVisible('none');
+        setVisible(true);
     };
-
-    function load() {
-        const read = localStorage.getItem('data');
+    let data = '0';
+    const read = typeof window !== 'undefined' ? localStorage.getItem('data') : null;
         if (read) {
-            setData(read);
+            data=read;
             console.log('Loading is done');
         } else {
             console.log('No data is found');
         }
-    }
+    
     return (
         <>
         <div >
@@ -93,7 +90,7 @@ const Demo: React.FC = function () {
                 <p style={{ fontSize: '20px', paddingLeft: '10%' }}>Price: $ {data}</p><br />
                 
                 <div style={{ paddingLeft: '10%' }}><span style={{ fontSize: '20px'}}>Address :</span>
-                    <span> <input style={{ width: '50%' }} className="bp3-input bp3-large" type="text" placeholder="Enter address here...." dir="auto" />
+                    <span> <input onChange={x => setAdd(x.target.value)} style={{ width: '50%' }} className="bp3-input bp3-large" type="text" placeholder="Enter address here...." dir="auto" />
                     </span>
                 </div>
                 <br />
@@ -101,18 +98,85 @@ const Demo: React.FC = function () {
                     <span style={{ fontSize: '20px',paddingRight: '2%' }}>Payment Method :</span>
                   
                     <ButtonGroup large={true}>
-                        <Button icon="credit-card" onClick={() => show() }>Credit Card</Button>
-                        <Button>Octopus Card</Button>
-                        <Button>Payme</Button>
+                        <Popover2
+                            content={
+                                <div className={Classes.POPOVER2_DISMISS} >
+                                    <div style={{ padding:'10%',fontSize: '20px' }}>You have selected credit card to pay!</div>
+
+                                    <span style={{  paddingLeft: '40%' }}><Button icon='cross' intent='danger'>
+                                        Close
+                                    </Button>
+                                    </span>
+                                    <br/>
+                                </div>
+                            }
+                            position='top'
+                        >
+                            <Button icon="credit-card" onClick={() => show()}>Credit Card</Button>
+                        </Popover2>
+                        <Popover2
+                            content={
+                                <div className={Classes.POPOVER2_DISMISS} style={{ width: "300px" }} >
+                                    <div style={{ padding: '10%', fontSize: '20px' }}>You have selected Octopus Card to pay!</div>
+
+                                    <span style={{ paddingLeft: '40%' }}><Button icon='cross' intent='danger'>
+                                        Close
+                                    </Button>
+                                    </span>
+                                    <br />
+                                </div>
+                            }
+                            position='top'
+                        >
+                            <Button onClick={() => close()} value="octopus">Octopus Card</Button>
+                        </Popover2>
+                        <Popover2
+                            content={
+                                <div className={Classes.POPOVER2_DISMISS} >
+                                    <div style={{ padding: '10%', fontSize: '20px' }}>You have selected Payme to pay!</div>
+
+                                    <span style={{ paddingLeft: '40%' }}><Button icon='cross' intent='danger'>
+                                        Close
+                                    </Button>
+                                    </span>
+                                    <br />
+                                </div>
+                            }
+                            position='top'
+                        >
+                            <Button onClick={() => close()} value="octopus">Payme</Button>
+                        </Popover2>
+
                     </ButtonGroup>
                     
                 </div>
                 <br />
                 <div style={{ paddingLeft: '10%' }}>
-                    <span style={{ fontSize: '20px'}}>Credit card Number :</span>
-                    <input style={{ width: '30%' }} className="bp3-input bp3-large" type="text" placeholder="xxxx-xxxx-xxxx-xxxx" dir="auto" />                  
-                    <input style={{ width: '5%' }} className="bp3-input bp3-large" type="text" placeholder="xxx" dir="auto" />
-                    <AnchorButton type="submit" className=".bp3-large bp3-button bp3-icon-dollar" href="./Home" > Confirm</AnchorButton>
+                    <span style={{ fontSize: '20px' }}>Credit card Number :</span>
+                    <input disabled={visible} style={{ width: '30%' }} className="bp3-input bp3-large" type="text" placeholder="xxxx-xxxx-xxxx-xxxx" dir="auto" />
+                    <input disabled={visible} style={{ width: '5%' }} className="bp3-input bp3-large" type="text" placeholder="xxx" dir="auto" />
+                    <br /><br />
+                    <Popover2
+                        
+                        content={
+                            <div className={Classes.POPOVER2_DISMISS} style={{ width:"450px" }}>
+                                <div style={{ padding: '5%', fontSize: '20px' }}>
+                                    Thank you for your purchase!<br /><br />
+                                    Your order will deliver to : {add}
+                                </div>
+
+                                <span style={{ paddingLeft: '40%' }}>
+                                    <AnchorButton type="submit" className=".bp3-large bp3-button bp3-icon-tick" intent='success' href="./Home" >OK!</AnchorButton>
+                                </span>
+                                <br />
+                                <br />
+                            </div>
+                        }
+                        position='top-right'
+                    >
+                        <Button className=".bp3-large bp3-button bp3-icon-dollar">Confirm</Button>
+                    </Popover2>
+                    <AnchorButton type="reset" className=".bp3-large bp3-button" href="./Home" > Cancel</AnchorButton>
                 </div>
 
             </div>

@@ -84,6 +84,11 @@ const Demo: React.FC = function () {
                     </span>
                 </div>
                 <span style={{ paddingLeft: '10%' }}> <AnchorButton type="submit" className=".bp3-large bp3-button" href="./Home" > Login</AnchorButton> </span>
+                <div>
+                    <span style={{ paddingLeft: '10%', fontSize: '20px' }}>If you are guest, Click
+                        <span> <AnchorButton type="submit" icon='arrow-right' className=".bp3-large bp3-button" href="./register" > Here</AnchorButton> </span>
+                        to register!</span>
+                </div>
             </div>
 
 
