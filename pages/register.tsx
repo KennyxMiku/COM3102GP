@@ -52,17 +52,17 @@ const Demo: React.FC = function () {
         name:'',
         password:''
     });
+    const [student,setStudent] = useState<boolean>(false);
     function submitRegister() {
         const data = JSON.stringify(user);
         localStorage.setItem('data', data);
 
         console.log(data);
-      }
-    
+      } 
     function validateForm() {
     return user.name.length > 0 && user.password.length > 0;
     }
-    
+
     return (
         <>
         <div>
@@ -84,8 +84,9 @@ const Demo: React.FC = function () {
 
                 </span>
             </nav>
-            </div>
-            <div>
+            </div> //end of nav
+            
+            <div> //Register page
                 <p style={{ fontSize: '30px', padding: '5%' }}>Register</p>
                 <div style={{ paddingLeft: '10%' }}><span style={{ fontSize: '20px' }}>Programe :</span>
                     <span> <input style={{ width: '20%' }} className="bp3-input bp3-large" type="text" placeholder="Enter programe here...." dir="auto" 
