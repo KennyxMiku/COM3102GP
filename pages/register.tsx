@@ -45,14 +45,14 @@ interface User {
     password: string;
 }
 
-const Demo: React.FC = function () {
+const Register: React.FC = function () {
     const [user, setUser] = useState<User>({
         programe:'',
         year:'',
         name:'',
         password:''
     });
-    function save() {
+    function submitRegister() {
         const data = JSON.stringify(user);
         localStorage.setItem('data', data);
 
@@ -112,7 +112,7 @@ const Demo: React.FC = function () {
                                                   onChange={x => setUser({...user, password: x.target.value})}/>
                     </span>
                 </div>
-                <span style={{ paddingLeft: '10%' }}> <AnchorButton type="submit" className=".bp3-large bp3-button" /*href="./Home"*/ onClick={save}> Register</AnchorButton> </span>
+                <span style={{ paddingLeft: '10%' }}> <AnchorButton type="submit" className=".bp3-large bp3-button" /*href="./Home"*/ onClick={submitRegister}> Register</AnchorButton> </span>
             </div>
 
 
@@ -122,4 +122,4 @@ const Demo: React.FC = function () {
 
 
 
-export default Demo;
+export default Register;

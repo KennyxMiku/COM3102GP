@@ -45,7 +45,7 @@ interface User {
     password: string;
 }
 
-const Demo: React.FC = function () {
+const Login: React.FC = function () {
 
 
     
@@ -98,4 +98,4 @@ const Demo: React.FC = function () {
 
 
 
-export default Demo;
+export default Login;
