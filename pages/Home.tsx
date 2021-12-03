@@ -64,11 +64,14 @@ const Demo: React.FC = function () {
             </nav>
         </div>
         <div className="content"><br/><br/><br/>
-        <H3 style={{ textAlign: 'left' }}> Student Union Online Shop </H3>
-        <H3 style={{ textAlign: 'left' }}> Hsu Campus Map </H3>
+            <div>
+            <H3> Student Union Online Shop</H3>
+            <h2 style={{color: '#21824d'}}>HSU Campus Map</h2>
+            </div>
             <div className="HsuMap">
                 <img src={'/HsuMap.jpg'} alt='Map' width='800' height='450' />
             </div>
+            <p>Student Co-op Shop is in S H Ho Academic Building(Building A) G/F</p>
         </div>
          </>
   )
