@@ -62,10 +62,10 @@ const Demo: React.FC = function () {
                   
                 </span>
             </nav>
-        </div>
-        <div className="content"><br/><br/><br/>
-            <div>
-            <H3> Student Union Online Shop</H3>
+            </div>
+            <div style={{ backgroundColor:'#E8F9B6' }} className="content"><br /><br /><br />
+                <div>
+                    <H2 style={{ textAlign: 'center' }}> Student Union Online Shop</H2>
             <div style={{fontSize:20}}>
                 About:
             </div>
@@ -74,8 +74,8 @@ const Demo: React.FC = function () {
             </div>
             <h2 style={{color: '#21824d'}}>HSU Campus Map</h2>
             </div>
-            <div className="HsuMap">
-                <img src={'/HsuMap.jpg'} alt='Map' width='800' height='450' />
+                <div className="HsuMap">
+                    <img style={{ display: 'block', marginLeft: 'auto', marginRight: 'auto' }} src={'/HsuMap.jpg'} alt='Map' width='800' height='450' />
             </div>
             <div style={{fontSize:16}}>Student Co-op Shop is in S H Ho Academic Building(Building A) G/F</div>
         </div>

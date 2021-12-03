@@ -48,6 +48,7 @@ const Demo: React.FC = function () {
     const [alert, setAlert] = useState<boolean>(false);
     const [alert1, setAlert1] = useState<boolean>(false);
     const [alert2, setAlert2] = useState<boolean>(false);
+    const [alert3, setAlert3] = useState<boolean>(false);
     const [log, setLog] = useState<boolean>(false);
     const read = typeof window !== 'undefined' ? localStorage.getItem('name') : null;
     let us = '';
@@ -60,13 +61,16 @@ const Demo: React.FC = function () {
     let check: boolean = false;
     const onClose = () => {
         setAlert(false);
-    }
+    };
     const onClose1 = () => {
         setAlert1(false);
     }
     const onClose2 = () => {
         setAlert2(false);
-    }
+    };
+    const onClose3 = () => {
+        setAlert3(false);
+    };
     function Login() {
         console.log(us);
         if (us === '') {
@@ -103,7 +107,11 @@ const Demo: React.FC = function () {
         
 
     }
-        
+    function Logout() {
+        localStorage.setItem('name', '');
+        setAlert3(true);
+        setLog(false);
+    }
 
     
     return (
@@ -133,8 +141,9 @@ const Demo: React.FC = function () {
                 </span>
             </nav>
             </div>
-            <div>
-                <p style={{ fontSize: '30px', padding: '5%' }}>Login</p>
+            <div style={{ backgroundColor:'#E8F9B6' }}>
+                <p style={{ fontSize: '30px', paddingLeft: '5%', paddingTop: "5%" }}>Login <span style={{ paddingLeft: '80%', fontSize: '18px' }}>
+                    <Button type="submit" className="bp3-large bp3-button" onClick={() => Logout()} > Logout</Button> </span></p>
                 <p style={{ fontSize: '30px',paddingLeft: '10%' }}>Welcome {us}!</p>
                 <div style={{ paddingLeft: '10%' }}><span style={{ fontSize: '20px' }}>Username/StudentID :</span>
                     <span> <InputGroup style={{ width: '20%' }} disabled={log} className=" bp3-large" type="text" placeholder="Enter username here...." dir="auto"
@@ -149,17 +158,14 @@ const Demo: React.FC = function () {
                     </span>
                 </div>
                 <br />
-                <span style={{ paddingLeft: '10%' }}> <Button type="submit" className=".bp3-large bp3-button" onClick={() => Login() } > Login</Button> </span>
-                <br />
+                <span style={{ paddingLeft: '10%' }}> <Button type="submit" className="bp3-large bp3-button" onClick={() => Login() } > Login</Button> </span>
+                <br /><br />
                 <div>
                     <span style={{ paddingLeft: '10%', fontSize: '20px' }}>If you are guest, Click
-                        <span> <AnchorButton type="submit" icon='arrow-right' className=".bp3-large bp3-button" href="./register" > Here</AnchorButton> </span>
+                        <span> <AnchorButton type="submit" icon='arrow-right' className="bp3-large bp3-button" href="./register" > Here</AnchorButton> </span>
                         to register!</span>
-
-
-
-                </div>
-                <div style={{ paddingLeft: '10%', fontSize: '20px' }}><AnchorButton type="submit" icon='arrow-right' className=".bp3-large bp3-button" href="./Adminapi" > Admin only</AnchorButton> </div>
+                </div><br />
+                <div style={{ paddingLeft: '10%', fontSize: '20px' }}><AnchorButton type="submit" className="bp3-large bp3-button" href="./Adminapi" > Admin only</AnchorButton> </div>
                 <Alert style={{ width: '450px' }} isOpen={alert} intent={Intent.SUCCESS} icon='tick' onClose={() => onClose()} >
                     <p style={{ fontSize: "20px" }}>
                         Welcome {name}!;
@@ -174,6 +180,11 @@ const Demo: React.FC = function () {
                 <Alert style={{ width: '450px' }} isOpen={alert2} intent={Intent.DANGER} icon='warning-sign' onClose={() => onClose2()} >
                     <p style={{ fontSize: "20px" }}>
                         You have been login!
+                    </p>
+                </Alert>
+                <Alert style={{ width: '450px' }} isOpen={alert3} intent={Intent.SUCCESS} icon='tick' onClose={() => onClose3()} >
+                    <p style={{ fontSize: "20px" }}>
+                        You have been logout!
                     </p>
                 </Alert>
             </div>

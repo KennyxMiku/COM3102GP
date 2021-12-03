@@ -46,6 +46,7 @@ const Home: React.FC = function () {
     const [id, setId] = useState<string>('');
     const [pw, setPw] = useState<string>('');
     const [alert, setAlert] = useState<boolean>(false);
+    const [alert1, setAlert1] = useState<boolean>(false);
     let uss: User[];
     let data = '0';
     const usss = typeof window !== 'undefined' ? localStorage.getItem('user') : null;
@@ -62,7 +63,13 @@ const Home: React.FC = function () {
     function checkLogin() {        
         if (id === "comadmin" && pw === "com3102") {
             setVisible(true);
-        } else { }
+        } else {
+            setAlert(true);
+        }
+    }
+    function clear() {
+        localStorage.removeItem('user');
+        console.log('Data is cleared');
     }
     const close = () => {
         setVisible(false);
@@ -70,11 +77,15 @@ const Home: React.FC = function () {
     const onClose = () => {
         setAlert(false);
     };
-    
-    
+    const onClose1 = () => {
+        setAlert1(false);
+    };
+    const open = () => {
+        setAlert1(true);
+    };
     return (
         <>
-                <div style={{ backgroundColor: 'white' }}>
+                <div style={{ backgroundColor: '#FFEEC5' }}>
                 <br /> <br /><br />
                 <H2 style={{ textAlign: 'center' }}> Admin Login: </H2>
                   
@@ -91,14 +102,14 @@ const Home: React.FC = function () {
                         </span>
                     </div>
                     <br />
-                    <span style={{ paddingLeft: '10%' }}> <Button type="submit" className=".bp3-large bp3-button" onClick={() => checkLogin()} > Login</Button> </span>
-
+                <span style={{ paddingLeft: '10%' }}> <Button type="submit" className="bp3-large bp3-button" onClick={() => checkLogin()} > Login</Button> </span>
+                <span style={{ paddingLeft: '20%' }}>  <AnchorButton href="./login" className="bp3-button bp3-large bp3-icon-log-in" >Go back</AnchorButton> </span>
                 <Dialog isOpen={visible} onClose={() => close()}>
                     <span style={{ fontSize:'20px' }} className={Classes.DIALOG_HEADER}>User information</span>
                     {data}
                     <div className={Classes.DRAWER_FOOTER} >
                         <Button type="submit" className=".bp3-large bp3-button" onClick={() => close()} > close</Button>
-
+                        <span style={{ paddingLeft: '10%' }}> <Button type="submit" className=".bp3-large bp3-button" onClick={() => open()} > Clear</Button> </span>
                     </div>
                  </Dialog>
                 <Alert style={{ width: '450px' }} isOpen={alert} intent={Intent.DANGER} icon='warning-sign' onClose={() => onClose()} >
@@ -107,33 +118,14 @@ const Home: React.FC = function () {
                         Please try again.
                     </p>
                 </Alert>
+                <Alert style={{ width: '450px' }} isOpen={alert1} intent={Intent.DANGER} icon='warning-sign' cancelButtonText='No' confirmButtonText='confirm' onClose={() => onClose1()} onConfirm={() => clear()}>
+                    <p style={{ fontSize: "20px" }}>
+                        Confirm to delete all user data?
+                    </p>
+                </Alert>
             </div>
 
             </>
-  )
-}
-
-const Api: React.FC<{
-    item: User;
-   
-}> = function ({ item }) {
-    const { programe, year, name, password } = item
-
-    
-    return (
-
-        <span style={{ display: 'inline-flex', width: '33%', padding: 20, position:'relative' }}>
-
-            <Callout className="bp3-intent-primary" >
-                <span style={{ fontSize:"18px" }}>
-                    <p>Name: {name}</p>
-                    <p>Programme: {programe}</p>
-                    <p>Year:{year}</p>
-                    <p>Password: {password}</p>
-                    </span>
-            </Callout>        
-            </span>
-        
   )
 }
 

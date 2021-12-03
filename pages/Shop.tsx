@@ -193,7 +193,7 @@ const Home: React.FC = function () {
                     </nav>
 
             </div>
-                <div style={{ backgroundColor: 'white' }}>
+            <div style={{ backgroundColor: 'WHITE' }}>
                 <br /> <br /><br />
                 <H2 style={{ textAlign: 'center' }}> Product: </H2>
                 <div>{shopItems.map(item => <ShopItem key={item.id} item={item} onAdd={() => addItemToCart(item)} />)}</div>

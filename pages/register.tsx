@@ -107,8 +107,6 @@ const Demo: React.FC = function () {
 
                     } else {
                         setUser([...user, { programe: prog, year: year, name: name, password: pw }]);
-                        localStorage.setItem('user', JSON.stringify(user))
-                        console.log(JSON.parse(usss));
                         setAlert(true);
                     }
 
@@ -242,7 +240,7 @@ const Demo: React.FC = function () {
                         onChange={x => setPw2(x.target.value)} />
                     </span>
                 </div>
-                <span style={{ paddingLeft: '10%' }}> <AnchorButton type="submit" className=".bp3-large bp3-button" /*href="./Home"*/ onClick={submitRegister}> Register</AnchorButton> </span>
+                <span style={{ paddingLeft: '10%' }}> <AnchorButton type="submit" className=".bp3-large bp3-button" onClick={submitRegister}> Register</AnchorButton> </span>
                 <Alert style={{ width: '450px' }} isOpen={alert} intent={Intent.SUCCESS} icon='tick' onClose={() => onClose()} >
                     <p style={{ fontSize: "20px" }}>
                         Your register is success!
