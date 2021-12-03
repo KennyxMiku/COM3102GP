@@ -66,11 +66,6 @@ const Home: React.FC = function () {
             console.log('No data is found');
         }
     }
-
-    function clear() {
-        localStorage.removeItem('data');
-        console.log('Data is cleared');
-    }
     const showDrawer = () => {
         setVisible(true);
         Total();
