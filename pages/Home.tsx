@@ -66,12 +66,18 @@ const Demo: React.FC = function () {
         <div className="content"><br/><br/><br/>
             <div>
             <H3> Student Union Online Shop</H3>
+            <div style={{fontSize:20}}>
+                About:
+            </div>
+            <div style={{fontSize:18}}>
+                現屆：香港恒生大學第十一屆學生會幹事會 － 逆恒
+            </div>
             <h2 style={{color: '#21824d'}}>HSU Campus Map</h2>
             </div>
             <div className="HsuMap">
                 <img src={'/HsuMap.jpg'} alt='Map' width='800' height='450' />
             </div>
-            <p>Student Co-op Shop is in S H Ho Academic Building(Building A) G/F</p>
+            <div style={{fontSize:16}}>Student Co-op Shop is in S H Ho Academic Building(Building A) G/F</div>
         </div>
          </>
   )
