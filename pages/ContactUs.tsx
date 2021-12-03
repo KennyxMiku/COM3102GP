@@ -73,9 +73,8 @@ const ContactUs: React.FC = function () {
                 Contact Us 
             </div>
             <div className='contact' style={{ color:'black', fontSize:18}}>
-                <div style={{display:'inline'}}>English Address: </div>
-                <a href='https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.google.com%2Fmaps%2Fdir%2F%3Fapi%3D1%26destination%3D22.378734366722%252C114.21173383326%26fbclid%3DIwAR1nEKeb0mL7yaQHX4EVnwA9Js7jkPMRQ-_yXMQCHIuPNLHCMKhgFpFLmBI&h=AT2F82GBoBBH0u0VBsCvcyjedzpik1WrLIBt7SPiCmt6bmwwm4-CBEVO4rVoo0xfbRSfQVfrMMhIpfYkbc9yMg-pYU4LxsqVRgLo_npPHuctr_8MIoKmB4ZPjc9c5iqiXUXn8tZ3YSs'
-                style={{display:'inline'}}>
+                <div>Student Union Office Address: </div>
+                <a href='https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.google.com%2Fmaps%2Fdir%2F%3Fapi%3D1%26destination%3D22.378734366722%252C114.21173383326%26fbclid%3DIwAR1nEKeb0mL7yaQHX4EVnwA9Js7jkPMRQ-_yXMQCHIuPNLHCMKhgFpFLmBI&h=AT2F82GBoBBH0u0VBsCvcyjedzpik1WrLIBt7SPiCmt6bmwwm4-CBEVO4rVoo0xfbRSfQVfrMMhIpfYkbc9yMg-pYU4LxsqVRgLo_npPHuctr_8MIoKmB4ZPjc9c5iqiXUXn8tZ3YSs'>
                 Room 303, 3/F, Lee Shau Kee Complex (Block B), The Hang Seng University of Hong Kong, Hang Shin Link, Siu Lek Yuen, Shatin, New Territories, Hong Kong
                 </a>
                 <br/>中文地址：香港新界沙田小瀝源行善里香港恒生大學B座李兆基綜合大樓3樓303室
