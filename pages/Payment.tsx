@@ -55,38 +55,59 @@ const Demo: React.FC = function () {
     const [alert, setAlert] = useState<boolean>(false);
     const [alert1, setAlert1] = useState<boolean>(false);
     const [alert2, setAlert2] = useState<boolean>(false);
-    const onOpen = () => {
-        if (add === '' || email === '') {
-            setAlert1(true);
-        } else {
-            if (pay === 'credit') {
-                if (cre === '' || cred === '') {
-                    setAlert2(true);
-                } else { setAlert(true)}
-                
+    const [alert3, setAlert3] = useState<boolean>(false);
 
+    const rea = typeof window !== 'undefined' ? localStorage.getItem('name') : null;
+    let us = '';
+    if (rea) {
+        us = rea;
+        console.log('Loading is done');
+    } else {
+        console.log('No data is found');
+    }
+
+    const onOpen = () => {
+        if (us === '') {
+            setAlert3(true);
+
+        } else {
+            if (add === '' || email === '') {
+                setAlert1(true);
             } else {
-                setAlert(true);
+                if (pay === 'credit') {
+                    if (cre === '' || cred === '') {
+                        setAlert2(true);
+                    } else { setAlert(true) }
+
+
+                } else {
+                    setAlert(true);
+                }
+
             }
 
         }
         
-    }
+
+    };
     const onOpen1 = () => {
         setAlert1(true);
-    }
+    };
     const onOpen2 = () => {
         setAlert2(true);
-    }
+    };
     const onClose = () => {
         setAlert(false);
-    }
+    };
     const onClose1 = () => {
         setAlert1(false);
-    }
+    };
     const onClose2 = () => {
         setAlert2(false);
-    }
+    };
+    const onClose3 = () => {
+        setAlert3(false);
+    };
     const show = () => {
         setVisible(false);
         
@@ -112,11 +133,7 @@ const Demo: React.FC = function () {
         setPay('credit');
 
     }
-    function checking() {
-        
 
-
-    }
 
     return (
         <>
@@ -221,7 +238,7 @@ const Demo: React.FC = function () {
                         (&nbsp;<input maxLength={3} disabled={visible} style={{ width: '3%' }} onChange={x => setCred(x.target.value)} className="bp3-large bp3-input" type="text" placeholder="xxx" dir="auto" />&nbsp;)
                     </span>
                     <br /><br />
-                    <Button className=".bp3-large bp3-button bp3-icon-dollar" onClick={() => onOpen()}>Confirm</Button>
+                    <Button className="bp3-large bp3-button bp3-icon-dollar" onClick={() => onOpen()}>Confirm</Button>
                     <Dialog isOpen={alert} onClose={() => onClose()} style={{ width: '700px', height: '500px' }} canOutsideClickClose={false} canEscapeKeyClose={false}>
                         <span style={{ fontSize: '20px' }} className={Classes.DIALOG_HEADER}>User information</span>
                         <span className={Classes.DIALOG_BODY}>
@@ -251,6 +268,11 @@ const Demo: React.FC = function () {
                     <Alert style={{ width: 'auto', height: 'auto' }} isOpen={alert2} confirmButtonText="OK!" intent={Intent.DANGER} icon='warning-sign' onClose={() => onClose2()} >
                         <p style={{ padding: '5%', fontSize: '20px' }}>
                             Credit card number or safety number is empty!
+                        </p>
+                    </Alert>
+                    <Alert style={{ width: 'auto', height: 'auto' }} isOpen={alert3} confirmButtonText="OK!" intent={Intent.DANGER} icon='warning-sign' onClose={() => onClose3()} >
+                        <p style={{ fontSize: '20px' }}>
+                            Please login first!
                         </p>
                     </Alert>
                     <AnchorButton type="reset" className=".bp3-large bp3-button" href="./Home" > Cancel</AnchorButton>

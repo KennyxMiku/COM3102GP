@@ -53,12 +53,15 @@ const Demo: React.FC = function () {
     const [name, setName] = useState<string>('');
     const [pw, setPw] = useState<string>('');
     const [pw2, setPw2] = useState<string>('');
-    const [state, setState] = useState<string>('st');
+    const [state, setState] = useState<string>('pb');
     const [student, setStudent] = useState<boolean>(true);
     const [alert, setAlert] = useState<boolean>(false);
     const [alert1, setAlert1] = useState<boolean>(false);
     const [alert2, setAlert2] = useState<boolean>(false);
     const [alert3, setAlert3] = useState<boolean>(false);
+    const [alert4, setAlert4] = useState<boolean>(false);
+    
+    let check: boolean = false;
     let users = [];
     const usss = typeof window !== 'undefined' ? localStorage.getItem('user') : null;
     if (usss) {
@@ -72,8 +75,7 @@ const Demo: React.FC = function () {
     const [user, setUser] = useState<User[]>(users);
 
     const onClose = () => {
-        localStorage.setItem('user', JSON.stringify(user))
-        console.log(JSON.parse(usss));
+        localStorage.setItem('user', JSON.stringify(user));
         setAlert(false);
     }
     const onClose1 = () => {
@@ -84,6 +86,9 @@ const Demo: React.FC = function () {
     }
     const onClose3 = () => {
         setAlert3(false);
+    }
+    const onClose4 = () => {
+        setAlert4(false);
     }
     const onPb = () => {
         setState('pb');
@@ -106,8 +111,21 @@ const Demo: React.FC = function () {
                         setAlert3(true);
 
                     } else {
-                        setUser([...user, { programe: prog, year: year, name: name, password: pw }]);
-                        setAlert(true);
+                        for (let i = 0; i < user.length; i++) {
+                            if (name === user[i].name) {
+                                check = true;
+                            }
+
+                        }
+                        if (check === true) {
+                            setAlert4(true)
+                        } else {
+                            setUser([...user, { programe: prog, year: year, name: name, password: pw }]);
+                            setAlert(true);
+
+                        }
+
+                        
                     }
 
                 }
@@ -123,10 +141,19 @@ const Demo: React.FC = function () {
                         setAlert3(true);
 
                     } else {
-                        setUser([...user, { programe: prog, year: year, name: name, password: pw }]);
-                        localStorage.setItem('user', JSON.stringify(user))
-                        
-                        setAlert(true);
+                        for (let i = 0; i < user.length; i++) {
+                            if (name === user[i].name) {
+                                check = true;
+                            }
+
+                        }
+                        if (check === true) {
+                            setAlert4(true)
+                        } else {
+                            setUser([...user, { programe: prog, year: year, name: name, password: pw }]);
+                            setAlert(true);
+
+                        }
                     }
 
                 }
@@ -262,6 +289,12 @@ const Demo: React.FC = function () {
                         Incorrect password!<br />
                         Please input same password in both text area.
                        
+                    </p>
+                </Alert>
+                <Alert style={{ width: '450px' }} isOpen={alert4} intent={Intent.DANGER} icon='warning-sign' onClose={() => onClose4()} >
+                    <p style={{ fontSize: "20px" }}>
+                        Username has already been used.<br/><br/>
+                        Please try another one.
                     </p>
                 </Alert>
             </div>

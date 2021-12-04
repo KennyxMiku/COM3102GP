@@ -32,7 +32,7 @@ import "@blueprintjs/popover2/lib/css/blueprint-popover2.css";
 import { FocusStyleManager } from "@blueprintjs/core";
 import { Position } from '@blueprintjs/core';
 import { ICON } from '@blueprintjs/core/lib/esm/common/classes';
-
+import Marquee from "react-easy-marquee";
 
 FocusStyleManager.onlyShowFocusOnTabs();
 const shopItems = getAllItems();
@@ -219,7 +219,14 @@ const Home: React.FC = function () {
             <div style={{ backgroundColor: 'WHITE' }}>
                 <br /> <br /><br />
                 <H2 style={{ textAlign: 'center' }}> Product: </H2>
-                <p style={{ paddingLeft:'5%',fontSize: '20px' }}>Welcome {us}! Choose any product you want!</p>
+                <div>
+                    <Marquee duration={15000} height="50px">
+                        <H3> Welcome {us}! Choose any product you want!  </H3>
+
+
+                    </Marquee>
+                </div>
+               
                 <div>{shopItems.map(item => <ShopItem key={item.id} item={item} onAdd={() => addItemToCart(item)} />)}</div>
                 
             </div>

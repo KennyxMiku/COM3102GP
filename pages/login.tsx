@@ -35,7 +35,7 @@ import "@blueprintjs/popover2/lib/css/blueprint-popover2.css";
 
 import { FocusStyleManager } from "@blueprintjs/core";
 import { ICON } from '@blueprintjs/core/lib/esm/common/classes';
-import { User }from './register'
+ 
 
 FocusStyleManager.onlyShowFocusOnTabs();
 
@@ -142,8 +142,13 @@ const Demo: React.FC = function () {
             </nav>
             </div>
             <div style={{ backgroundColor:'#E8F9B6' }}>
-                <p style={{ fontSize: '30px', paddingLeft: '5%', paddingTop: "5%" }}>Login <span style={{ paddingLeft: '80%', fontSize: '18px' }}>
-                    <Button type="submit" className="bp3-large bp3-button" onClick={() => Logout()} > Logout</Button> </span></p>
+                <p style={{ fontSize: '30px', paddingLeft: '5%', paddingTop: "5%" }}>Login <span style={{ paddingLeft: '70%', fontSize: '18px' }}>
+                    <Button type="submit" className="bp3-large bp3-button" onClick={() => Logout()} > Logout</Button> 
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;<AnchorButton href="./personal" className="bp3-button bp3-large" >Personal</AnchorButton>
+
+                </span>
+                </p>
                 <p style={{ fontSize: '30px',paddingLeft: '10%' }}>Welcome {us}!</p>
                 <div style={{ paddingLeft: '10%' }}><span style={{ fontSize: '20px' }}>Username/StudentID :</span>
                     <span> <InputGroup style={{ width: '20%' }} disabled={log} className=" bp3-large" type="text" placeholder="Enter username here...." dir="auto"
@@ -173,6 +178,7 @@ const Demo: React.FC = function () {
                 </Alert>
                 <Alert style={{ width: '450px' }} isOpen={alert1} intent={Intent.DANGER} icon='warning-sign' onClose={() => onClose1()} >
                     <p style={{ fontSize: "20px" }}>
+
                         Username or Password not correct!<br />
                         Please try again.
                     </p>
