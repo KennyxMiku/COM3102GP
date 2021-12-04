@@ -218,10 +218,10 @@ const Home: React.FC = function () {
             </Alert>
             <div style={{ backgroundColor: 'WHITE' }}>
                 <br /> <br /><br />
-                <H2 style={{ textAlign: 'center' }}> Product: </H2>
+                <H1 style={{ textAlign: 'center', paddingTop:'3%' }}> Product: </H1>
                 <div>
                     <Marquee duration={15000} height="50px">
-                        <H3> Welcome {us}! Choose any product you want!  </H3>
+                        <H2><i>Welcome {us}! Choose any product you want!</i>  </H2>
 
 
                     </Marquee>

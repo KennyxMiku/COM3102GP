@@ -72,25 +72,25 @@ const Demo: React.FC = function () {
                     </Marquee>
                 </div>
                 <div>
-                    <H2 style={{ textAlign: 'center' }}> Student Union Online Shop</H2>
+                    <H1 style={{ textAlign: 'center' }}> Student Union Online Shop</H1>
                     
                     <br/>
                     
                 
 
-            <div style={{fontSize:20}}>
+                    <div style={{ fontSize: 25, paddingLeft: '10%'}}>
                 About:
             </div>
-            <div style={{fontSize:18}}>
+                    <div style={{ fontSize: 23, paddingLeft:'10%'}}>
                 現屆：香港恒生大學第十一屆學生會幹事會 － 逆恒
             </div>
-            <h2 style={{color: '#21824d'}}>HSU Campus Map</h2>
+                    <h2 style={{ fontSize: 23,color: '#21824d', paddingLeft: '10%'}}>HSU Campus Map</h2>
             </div>
                 <div className="HsuMap">
                     <img style={{ display: 'block', marginLeft: 'auto', marginRight: 'auto' }} src={'/HsuMap.jpg'} alt='Map' width='800' height='450' />
                 </div>
                 <br/>
-            <div style={{fontSize:25}}>Student Co-op Shop is in S H Ho Academic Building(Building A) G/F</div>
+                <div style={{ fontSize: 25, paddingLeft: '10%'}}>Student Co-op Shop is in S H Ho Academic Building(Building A) G/F</div>
         </div>
          </>
   )
