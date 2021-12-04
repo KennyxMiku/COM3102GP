@@ -63,7 +63,7 @@ const Demo: React.FC = function () {
                 </span>
             </nav>
             </div>
-            <div style={{ backgroundColor: '#E8F9B6' }} className="content"><br /><br /><br />
+            <div style={{ backgroundColor: '#E8F9B6',paddingBottom: '20%' }} className="content"><br /><br /><br />
                 <div>
                     <Marquee duration={10000} background="#E8F9B6" height="100px">
                         <H1><img src={'/hsu-logo.png'} width='50' height='50' /> 歡迎光臨 Welcome 欢迎光临 Welcome 歡迎光臨  </H1>
