@@ -276,7 +276,7 @@ const Demo: React.FC = function () {
                             Please login first!
                         </p>
                     </Alert>
-                    <AnchorButton type="reset" className=".bp3-large bp3-button" href="./Home" > Cancel</AnchorButton>
+                    <AnchorButton type="reset" className="bp3-large bp3-button" href="./Home" > Cancel</AnchorButton>
                 </div>
 
             </div>
