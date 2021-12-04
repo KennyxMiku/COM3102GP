@@ -155,14 +155,15 @@ const Demo: React.FC = function () {
                         <AnchorButton href="./ContactUs" className="bp3-button bp3-large bp3-icon-phone">Contact us</AnchorButton>
                         <span className="bp3-navbar-divider"></span>
                     </div>
-                    <div className="bp3-navbar-group bp3-align-right">
-                        <button className="bp3-button bp3-large bp3-icon-log-in" >Login</button>
+                        <div className="bp3-navbar-group bp3-align-right">
+                            <AnchorButton href="./login" className="bp3-button bp3-large bp3-icon-log-in">Login</AnchorButton>
+                       
                     </div>
                   
                 </span>
             </nav>
-            </div>  
-            <div>
+            </div>
+            <div style={{ backgroundColor: '#E8F9B6', paddingBottom:'20%' }}>
                 <p style={{ fontSize: '30px', padding: '5%' }}>Payment</p>
                 <p style={{ fontSize: '20px', paddingLeft: '10%' }}>Price: $ {data}</p><br />
 

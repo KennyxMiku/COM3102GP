@@ -56,6 +56,8 @@ const Demo: React.FC = function () {
     const [alert, setAlert] = useState<boolean>(false);
     const [alert1, setAlert1] = useState<boolean>(false);
     const [alert2, setAlert2] = useState<boolean>(false);
+    const [alert3, setAlert3] = useState<boolean>(false);
+    const [visible, setVisible] = useState(true);
     const rea = typeof window !== 'undefined' ? localStorage.getItem('name') : null;
     let us = '';
     if (rea) {
@@ -76,15 +78,22 @@ const Demo: React.FC = function () {
     }
     const [user, setUser] = useState<User[]>(users);
     const show = () => {
-        for (let i = 0; i < user.length; i++) {
-            if (us === user[i].name) {
-                
-                setName(user[i].name);
-                setYear(user[i].year);
-                setProg(user[i].programe);
-                setChpw(user[i].password);
+        if (us === '') {
+            setAlert3(true);
+            setVisible(true);
+        } else {
+            setVisible( false );
+            for (let i = 0; i < user.length; i++) {
+                if (us === user[i].name) {
+
+                    setName(user[i].name);
+                    setYear(user[i].year);
+                    setProg(user[i].programe);
+                    setChpw(user[i].password);
+                }
             }
         }
+        
 
     };
 
@@ -98,7 +107,9 @@ const Demo: React.FC = function () {
     const onClose2 = () => {
         setAlert2(false);
     };
-
+    const onClose3 = () => {
+        setAlert3(false);
+    };
     function onReset() {
         let check = false;
         if (opw !== chpw) {
@@ -144,13 +155,13 @@ const Demo: React.FC = function () {
                         <span className="bp3-navbar-divider"></span>
                     </div>
                     <div className="bp3-navbar-group bp3-align-right">
-                        <AnchorButton href="./login" className="bp3-button bp3-large bp3-icon-phone">Login</AnchorButton>
+                            <AnchorButton href="./login" className="bp3-button bp3-large bp3-icon-log-in">Login</AnchorButton>
                     </div>
                   
                 </span>
             </nav>
-            </div>  
-            <div>
+            </div>
+            <div style={{ backgroundColor: "#FFE4A0", paddingBottom:'50%' }}>
                 <p style={{ fontSize: '30px', padding: '5%' }}>View State <Button type="submit" icon='arrow-right' className="bp3-large bp3-button" onClick={() => show()} >Click me</Button></p>
                 <p style={{ fontSize: '20px', paddingLeft: '10%' }}>Username: {name}</p><br />
                 <p style={{ fontSize: '20px', paddingLeft: '10%' }}>(For student only) Programme:  {prog}</p><br />
@@ -180,8 +191,8 @@ const Demo: React.FC = function () {
                 </div>
                 <br />
                 <div style={{ paddingLeft: '10%' }}>
-                    
-                    <Button className="bp3-large bp3-button bp3-icon-tick" onClick={() => onReset() }>Confirm</Button>
+
+                    <Button className="bp3-large bp3-button bp3-icon-tick" disabled={visible} onClick={() => onReset()}>Confirm</Button>
                     <Alert style={{ width: '450px' }} isOpen={alert} intent={Intent.SUCCESS} icon='tick' onClose={() => onClose()} >
                         <p style={{ fontSize: "20px" }}>
                             Password reset success!
@@ -199,7 +210,11 @@ const Demo: React.FC = function () {
                             Please input same password in both text area.
                         </p>
                     </Alert>
-
+                    <Alert style={{ width: '500px', height: 'auto' }} isOpen={alert3} confirmButtonText="OK!" intent={Intent.DANGER} icon='warning-sign' onClose={() => onClose3()} >
+                        <p style={{ fontSize: '20px' }}>
+                            Please login First!!
+                        </p>
+                    </Alert>
                     <span style={{ paddingLeft: '5%' }}> <AnchorButton type="reset" className="bp3-large bp3-button" href="./Home" > Cancel</AnchorButton></span>
                 </div>
 

@@ -85,7 +85,7 @@ const Home: React.FC = function () {
     };
     return (
         <>
-                <div style={{ backgroundColor: '#FFEEC5' }}>
+            <div style={{ backgroundColor: '#FFEEC5', paddingBottom: '50%' }}>
                 <br /> <br /><br />
                 <H2 style={{ textAlign: 'center' }}> Admin Login: </H2>
                   

@@ -141,15 +141,16 @@ const Demo: React.FC = function () {
                 </span>
             </nav>
             </div>
-            <div style={{ backgroundColor:'#E8F9B6' }}>
-                <p style={{ fontSize: '30px', paddingLeft: '5%', paddingTop: "5%" }}>Login <span style={{ paddingLeft: '70%', fontSize: '18px' }}>
+            <div style={{ backgroundColor: '#E8F9B6', paddingBottom:'20%' }}>
+                <p style={{ fontSize: '30px', paddingLeft: '5%', paddingTop: "5%" }}><b>Login</b> <span style={{ paddingLeft: '70%', fontSize: '18px' }}>
                     <Button type="submit" className="bp3-large bp3-button" onClick={() => Logout()} > Logout</Button> 
 
                     &nbsp;&nbsp;&nbsp;&nbsp;<AnchorButton href="./personal" className="bp3-button bp3-large" >Personal</AnchorButton>
 
                 </span>
                 </p>
-                <p style={{ fontSize: '30px',paddingLeft: '10%' }}>Welcome {us}!</p>
+                <p style={{ fontSize: '30px', paddingLeft: '10%' }}><b><i>Welcome {us}!</i></b></p>
+                <br/>
                 <div style={{ paddingLeft: '10%' }}><span style={{ fontSize: '20px' }}>Username/StudentID :</span>
                     <span> <InputGroup style={{ width: '20%' }} disabled={log} className=" bp3-large" type="text" placeholder="Enter username here...." dir="auto"
                         onChange={x => setName(x.target.value)}/>
@@ -176,7 +177,7 @@ const Demo: React.FC = function () {
                         Welcome {name}!
                         </p>
                 </Alert>
-                <Alert style={{ width: '450px' }} isOpen={alert1} intent={Intent.DANGER} icon='warning-sign' onClose={() => onClose1()} >
+                <Alert style={{ width: 'auto' }} isOpen={alert1} intent={Intent.DANGER} icon='warning-sign' onClose={() => onClose1()} >
                     <p style={{ fontSize: "20px" }}>
 
                         Username or Password not correct!<br />
@@ -193,6 +194,7 @@ const Demo: React.FC = function () {
                         You have been logout!
                     </p>
                 </Alert>
+
             </div>
 
 

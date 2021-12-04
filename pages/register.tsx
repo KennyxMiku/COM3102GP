@@ -192,14 +192,14 @@ const Demo: React.FC = function () {
                 </span>
             </nav>
             </div> //end of nav
-            
-            <div> //Register page
-                <p style={{ fontSize: '30px', padding: '5%' }}>Register</p>
+
+            <div style={{ backgroundColor: '#E8F9B6', paddingBottom: '20%' }}> //Register page
+                <p style={{ fontSize: '30px', padding: '5%' }}><b>Register</b></p>
                 <ButtonGroup style={{ paddingLeft: '10%' }} large={true}>
                     <Popover2
                         content={
                             <div className={Classes.POPOVER2_DISMISS} style={{ width: "300px" }}>
-                                <div style={{ padding: '10%', fontSize: '20px' }}>Weclome guest!</div>
+                                <div style={{ padding: '12%', textAlign: 'center', fontSize: '20px' }}>Weclome guest!</div>
 
                                 <span style={{ paddingLeft: '40%' }}><Button icon='cross' intent='danger'>
                                     Close
@@ -210,12 +210,12 @@ const Demo: React.FC = function () {
                         }
                         position='top'
                     >
-                        <Button icon="credit-card" onClick={() => onPb()}>Public</Button>
+                        <Button icon="people" onClick={() => onPb()}>Public</Button>
                     </Popover2>
                     <Popover2
                         content={
                             <div className={Classes.POPOVER2_DISMISS} style={{ width: "300px" }} >
-                                <div style={{ padding: '10%', fontSize: '20px' }}>Welcome student!</div>
+                                <div style={{ padding: '12%', textAlign: 'center', fontSize: '20px' }}>Welcome student!</div>
 
                                 <span style={{ paddingLeft: '40%' }}><Button icon='cross' intent='danger'>
                                     Close
@@ -226,7 +226,7 @@ const Demo: React.FC = function () {
                         }
                         position='top'
                     >
-                        <Button onClick={() => onSt() } >Student</Button>
+                        <Button icon="person" onClick={() => onSt() } >Student</Button>
                     </Popover2>
                     
 
@@ -260,6 +260,7 @@ const Demo: React.FC = function () {
                         onChange={x => setPw(x.target.value)}/>
                     </span>
                 </div>
+                <br />
                 <div style={{ paddingLeft: '10%' }}><span style={{ fontSize: '20px' }}>Password :</span>
 
                     <span>  <input type="password" className="bp3-input bp3-large" placeholder="Enter your password..."
@@ -267,7 +268,8 @@ const Demo: React.FC = function () {
                         onChange={x => setPw2(x.target.value)} />
                     </span>
                 </div>
-                <span style={{ paddingLeft: '10%' }}> <AnchorButton type="submit" className=".bp3-large bp3-button" onClick={submitRegister}> Register</AnchorButton> </span>
+                <br />
+                <span style={{ paddingLeft: '10%' }}> <AnchorButton type="submit" className="bp3-large bp3-button" onClick={submitRegister}> Register</AnchorButton> </span>
                 <Alert style={{ width: '450px' }} isOpen={alert} intent={Intent.SUCCESS} icon='tick' onClose={() => onClose()} >
                     <p style={{ fontSize: "20px" }}>
                         Your register is success!
@@ -297,6 +299,7 @@ const Demo: React.FC = function () {
                         Please try another one.
                     </p>
                 </Alert>
+                
             </div>
 
 

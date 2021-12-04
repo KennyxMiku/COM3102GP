@@ -63,7 +63,7 @@ const Demo: React.FC = function () {
                 </span>
             </nav>
             </div>
-            <div style={{ backgroundColor: '#E8F9B6' }} className="content"><br /><br /><br />
+            <div style={{ backgroundColor: '#E8F9B6',paddingBottom: '20%' }} className="content"><br /><br /><br />
                 <div>
                     <Marquee duration={10000} background="#E8F9B6" height="100px">
                         <H1><img src={'/hsu-logo.png'} width='50' height='50' /> 歡迎光臨 Welcome 欢迎光临 Welcome 歡迎光臨  </H1>
@@ -72,25 +72,25 @@ const Demo: React.FC = function () {
                     </Marquee>
                 </div>
                 <div>
-                    <H2 style={{ textAlign: 'center' }}> Student Union Online Shop</H2>
+                    <H1 style={{ textAlign: 'center' }}> Student Union Online Shop</H1>
                     
                     <br/>
                     
                 
 
-            <div style={{fontSize:20}}>
+                    <div style={{ fontSize: 25, paddingLeft: '10%'}}>
                 About:
             </div>
-            <div style={{fontSize:18}}>
+                    <div style={{ fontSize: 23, paddingLeft:'10%'}}>
                 現屆：香港恒生大學第十一屆學生會幹事會 － 逆恒
             </div>
-            <h2 style={{color: '#21824d'}}>HSU Campus Map</h2>
+                    <h2 style={{ fontSize: 23,color: '#21824d', paddingLeft: '10%'}}>HSU Campus Map</h2>
             </div>
                 <div className="HsuMap">
                     <img style={{ display: 'block', marginLeft: 'auto', marginRight: 'auto' }} src={'/HsuMap.jpg'} alt='Map' width='800' height='450' />
                 </div>
                 <br/>
-            <div style={{fontSize:25}}>Student Co-op Shop is in S H Ho Academic Building(Building A) G/F</div>
+                <div style={{ fontSize: 25, paddingLeft: '10%'}}>Student Co-op Shop is in S H Ho Academic Building(Building A) G/F</div>
         </div>
          </>
   )
