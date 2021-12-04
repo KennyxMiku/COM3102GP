@@ -82,6 +82,9 @@ const ContactUs: React.FC = function () {
                             Room 303, 3/F, Lee Shau Kee Complex (Block B), The Hang Seng University of Hong Kong, Hang Shin Link, Siu Lek Yuen, Shatin, New Territories, Hong Kong
                             </a></p>
                             <p>中文地址：香港新界沙田小瀝源行善里香港恒生大學B座李兆基綜合大樓3樓303室</p>
+                            <div>
+                                <img src={'./hsuGoogleMap.jpg'} width='600' height='500'  />
+                            </div>
                         </span>
                     </Callout>              
             </div>
