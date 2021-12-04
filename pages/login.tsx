@@ -168,7 +168,7 @@ const Demo: React.FC = function () {
                 <div style={{ paddingLeft: '10%', fontSize: '20px' }}><AnchorButton type="submit" className="bp3-large bp3-button" href="./Adminapi" > Admin only</AnchorButton> </div>
                 <Alert style={{ width: '450px' }} isOpen={alert} intent={Intent.SUCCESS} icon='tick' onClose={() => onClose()} >
                     <p style={{ fontSize: "20px" }}>
-                        Welcome {name}!;
+                        Welcome {name}!
                         </p>
                 </Alert>
                 <Alert style={{ width: '450px' }} isOpen={alert1} intent={Intent.DANGER} icon='warning-sign' onClose={() => onClose1()} >

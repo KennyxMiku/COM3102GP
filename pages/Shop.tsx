@@ -15,7 +15,7 @@ import {
     Card,
     H1,H2,H3,
     Intent,
-    Overlay,
+    Alert,
     Drawer,
     DrawerSize,
     HTMLSelect,
@@ -51,7 +51,21 @@ const Home: React.FC = function () {
     const [count, setCount] = useState<number>(0);
     const [visible, setVisible] = useState(false);
     const [data, setData] = useState<string>('');
-
+    const [alert, setAlert] = useState<boolean>(false);
+    const read = typeof window !== 'undefined' ? localStorage.getItem('name') : null;
+    let us = '';
+    if (read) {
+        us = read;
+        console.log('Loading is done');
+    } else {
+        console.log('No data is found');
+    }
+    const onOpen = () => {
+        setAlert(true);
+    }
+    const onClose = () => {
+        setAlert(false);
+    }
     function save() {
         localStorage.setItem('data', count.toString());
         console.log('Data is saved');
@@ -67,8 +81,16 @@ const Home: React.FC = function () {
         }
     }
     const showDrawer = () => {
-        setVisible(true);
-        Total();
+
+        if (us === '') {
+            setAlert(true);
+
+        }
+            Total();
+            setVisible(true);
+        
+        
+
     };
     const closeDrawer = () => {
         setVisible(false);
@@ -186,11 +208,18 @@ const Home: React.FC = function () {
                         </Drawer>
                        </span>
                     </nav>
-
+                
             </div>
+
+            <Alert style={{ width: 'auto', height: 'auto' }} isOpen={alert} confirmButtonText="OK!" intent={Intent.DANGER} icon='warning-sign' onClose={() => onClose()} >
+                <p style={{  fontSize: '20px' }}>
+                    Please login first!
+                </p>
+            </Alert>
             <div style={{ backgroundColor: 'WHITE' }}>
                 <br /> <br /><br />
                 <H2 style={{ textAlign: 'center' }}> Product: </H2>
+                <p style={{ paddingLeft:'5%',fontSize: '20px' }}>Welcome {us}! Choose any product you want!</p>
                 <div>{shopItems.map(item => <ShopItem key={item.id} item={item} onAdd={() => addItemToCart(item)} />)}</div>
                 
             </div>

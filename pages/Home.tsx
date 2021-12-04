@@ -30,7 +30,7 @@ import "@blueprintjs/popover2/lib/css/blueprint-popover2.css";
 import { FocusStyleManager } from "@blueprintjs/core";
 import { Position } from '@blueprintjs/core';
 import { ICON } from '@blueprintjs/core/lib/esm/common/classes';
-
+import Marquee from "react-easy-marquee";
 
 FocusStyleManager.onlyShowFocusOnTabs();
 const Demo: React.FC = function () {
@@ -58,14 +58,26 @@ const Demo: React.FC = function () {
                     </div>
                     <div className="bp3-navbar-group bp3-align-right">
                         <AnchorButton href="./login" className="bp3-button bp3-large bp3-icon-log-in" >Login</AnchorButton>
-                    </div>
-                  
+                        </div>
+                        
                 </span>
             </nav>
             </div>
-            <div style={{ backgroundColor:'#E8F9B6' }} className="content"><br /><br /><br />
+            <div style={{ backgroundColor: '#E8F9B6' }} className="content"><br /><br /><br />
+                <div>
+                    <Marquee duration={10000} background="#E8F9B6" height="100px">
+                        <H1><img src={'/hsu-logo.png'} width='50' height='50' /> 歡迎光臨 Welcome 欢迎光临 Welcome 歡迎光臨  </H1>
+
+
+                    </Marquee>
+                </div>
                 <div>
                     <H2 style={{ textAlign: 'center' }}> Student Union Online Shop</H2>
+                    
+                    <br/>
+                    
+                
+
             <div style={{fontSize:20}}>
                 About:
             </div>
@@ -76,8 +88,9 @@ const Demo: React.FC = function () {
             </div>
                 <div className="HsuMap">
                     <img style={{ display: 'block', marginLeft: 'auto', marginRight: 'auto' }} src={'/HsuMap.jpg'} alt='Map' width='800' height='450' />
-            </div>
-            <div style={{fontSize:16}}>Student Co-op Shop is in S H Ho Academic Building(Building A) G/F</div>
+                </div>
+                <br/>
+            <div style={{fontSize:25}}>Student Co-op Shop is in S H Ho Academic Building(Building A) G/F</div>
         </div>
          </>
   )
