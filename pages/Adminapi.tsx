@@ -53,7 +53,7 @@ const Home: React.FC = function () {
     if (usss) {
         data = usss;
         uss = JSON.parse(usss)
-        console.log(JSON.parse(usss))
+        
         console.log('Loading is done');
     } else {
         console.log('No data is found');
