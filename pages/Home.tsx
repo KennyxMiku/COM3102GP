@@ -34,7 +34,7 @@ import Marquee from "react-easy-marquee";
 
 FocusStyleManager.onlyShowFocusOnTabs();
 const Demo: React.FC = function () {
-    
+   
     return (
 
         <>
@@ -65,8 +65,8 @@ const Demo: React.FC = function () {
             </div>
             <div style={{ backgroundColor: '#E8F9B6',paddingBottom: '20%' }} className="content"><br /><br /><br />
                 <div>
-                    <Marquee duration={10000} background="#E8F9B6" height="100px">
-                        <H1><img src={'/hsu-logo.png'} width='50' height='50' /> 歡迎光臨 Welcome 欢迎光临 Welcome 歡迎光臨  </H1>
+                    <Marquee duration={13000} background="#E8F9B6" axis="X"  height="100px">
+                        <H1><img src={'/hsu-logo.png'} width='50' height='50' /> 歡迎光臨 Welcome 欢迎光临 Welcome 歡迎光臨<img src={'/hsu-logo.png'} width='50' height='50' />  </H1>
 
 
                     </Marquee>
@@ -74,10 +74,34 @@ const Demo: React.FC = function () {
                 <div>
                     <H1 style={{ textAlign: 'center' }}> Student Union Online Shop</H1>
                     
-                    <br/>
-                    
-                
-
+                    <br />
+                    <H2 style={{ paddingLeft:'10%' }}> <i>Latest produts:</i></H2>
+                    <Marquee
+                        duration={11000}
+                        background="#E8F9B6"
+                        height="300px"
+                        width="100%"
+                        axis="X"
+                        pauseOnHover={true}
+                        reverse={false}
+                    >
+                        <H1> <img src={'./PilotBallPointPen.jpg'} width='300' height='300' />
+                            &nbsp;&nbsp;
+                            <img src={'./PotatoChips.png'} width='300' height='300' />
+                            &nbsp;&nbsp;
+                            <img src={'./PilotEraser.jpg'} width='300' height='300' />
+                            &nbsp;&nbsp;
+                            <img src={'./Vitasoy.jpeg'} width='300' height='300' />
+                            &nbsp;&nbsp;
+                            <img src={'./campusNotebook.png'} width='300' height='300' />
+                            &nbsp;&nbsp;
+                            <img src={'./WhiperMR.jpeg'} width='300' height='300' />
+                            &nbsp;&nbsp;
+                            <img src={'./Snicker.jpeg'} width='300' height='300' />
+                            &nbsp;&nbsp;
+                        </H1>
+                    </Marquee>
+                   
                     <div style={{ fontSize: 25, paddingLeft: '10%'}}>
                 About:
             </div>
